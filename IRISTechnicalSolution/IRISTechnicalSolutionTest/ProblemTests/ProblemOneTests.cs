@@ -12,27 +12,60 @@ public class ProblemOneTests
         _problemOne = new ProblemOne();
     }
 
+    // Testing balanced inputs
+    
     [Test]
-    public void SolveWithBalancedBracketsShouldReturnBalanced()
+    public void SolveWithBalancedBracketsShouldReturnBalancedCase1()
     {
-        Assert.Multiple(() =>
-        {
-            Assert.That(_problemOne.Solve("[()()]"), Is.EqualTo("Balanced"));
-            Assert.That(_problemOne.Solve("{[()]}"), Is.EqualTo("Balanced"));
-            Assert.That(_problemOne.Solve("[()]{}{[()()]()}"), Is.EqualTo("Balanced"));
-            Assert.That(_problemOne.Solve("{[()abc]}"), Is.EqualTo("Balanced"));
-        });
+
+        Assert.That(_problemOne.Solve("[()()]"), Is.EqualTo("Balanced"));
+    }
+    [Test]
+    public void SolveWithBalancedBracketsShouldReturnBalancedCase2()
+    {
+        Assert.That(_problemOne.Solve("{[()]}"), Is.EqualTo("Balanced"));
+    }
+    [Test]
+    public void SolveWithBalancedBracketsShouldReturnBalancedCase3()
+    {
+        Assert.That(_problemOne.Solve("[()]{}{[()()]()}"), Is.EqualTo("Balanced"));
+    }
+    [Test]
+    public void SolveWithBalancedBracketsAndTextShouldReturnBalanced()
+    {
+        Assert.That(_problemOne.Solve("{[()abc]}"), Is.EqualTo("Balanced"));
+    }
+
+    // Testing unbalanced strings
+    
+    [Test]
+    public void SolveWithUnbalancedStringShouldReturnNotBalancedCase1()
+    {
+        Assert.That(_problemOne.Solve("[(])"), Is.EqualTo("Not Balanced"));
     }
 
     [Test]
-    public void SolveWithUnbalancedStringsShouldReturnNotBalanced()
+    public void SolveWithUnbalancedStringShouldReturnNotBalancedCase2()
     {
-        Assert.Multiple(() =>
-        {
-            Assert.That(_problemOne.Solve("abcdefg"), Is.EqualTo("Not Balanced"));
-            Assert.That(_problemOne.Solve("[(])"), Is.EqualTo("Not Balanced"));
-            Assert.That(_problemOne.Solve("[(1]x2)3defgasjdk"), Is.EqualTo("Not Balanced"));
-            Assert.That(_problemOne.Solve("[[[)[){}k)("), Is.EqualTo("Not Balanced"));
-        });
+        Assert.That(_problemOne.Solve("[[[)[){})("), Is.EqualTo("Not Balanced"));
     }
+
+    [Test]
+    public void SolveWithUnbalancedStringShouldReturnNotBalancedCase3()
+    {
+        Assert.That(_problemOne.Solve("(()"), Is.EqualTo("Not Balanced"));
+    }
+
+    [Test]
+    public void SolveWithUnbalancedStringAndTextShouldReturnNotBalanced()
+    {
+        Assert.That(_problemOne.Solve("[(1]x2)3defgasjdk"), Is.EqualTo("Not Balanced"));
+    }
+
+    [Test]
+    public void SolveWithStringContainingNoBracketsShouldReturnNotBalanced()
+    {
+        Assert.That(_problemOne.Solve("abcdefg"), Is.EqualTo("Not Balanced"));
+    }
+    
 }

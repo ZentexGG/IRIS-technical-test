@@ -14,16 +14,23 @@ public class ProblemTwoTests
     
     // Testing correct array values
     [Test]
-    public void SolveWithCorrectParamShouldReturnCorrectValue()
+    public void SolveWithCorrectParamShouldReturnCorrectValueCase1()
     {
-        Assert.Multiple(() =>
-        {
-            Assert.That(_problemTwo.Solve(new[] { 2, 2, 1 }), Is.EqualTo(1));
-            Assert.That(_problemTwo.Solve(new[] { 4, 1, 2, 1, 2 }), Is.EqualTo(4));
-            Assert.That(_problemTwo.Solve(new[] { 1 }), Is.EqualTo(1));
-        });
+        Assert.That(_problemTwo.Solve(new[] { 2, 2, 1 }), Is.EqualTo(1));
     }
-    
+
+    [Test]
+    public void SolveWithCorrectParamShouldReturnCorrectValueCase2()
+    {
+        Assert.That(_problemTwo.Solve(new[] { 4, 1, 2, 1, 2 }), Is.EqualTo(4)); 
+    }
+
+    [Test]
+    public void SolveWithCorrectParamShouldReturnCorrectValueCase3()
+    {
+        Assert.That(_problemTwo.Solve(new[] { 1 }), Is.EqualTo(1));
+    }
+
     // Testing incorrect inputs
     [Test]
     public void SolveWithEvenLengthArrayParamShouldThrowErr()
