@@ -1,5 +1,6 @@
 using IRISTechnicalSolution.Interfaces;
 namespace IRISTechnicalSolution.Problems;
+// Current solution assumes there can be wrong inputs
 public class ProblemTwo : IProblemTwo
 {
     public int Solve(int[] nums)
